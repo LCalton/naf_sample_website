@@ -1,0 +1,509 @@
+<!doctype html>
+
+<!--
+	IMPORTANT TIP FOR NEW CODERS:
+	
+	Whenever you examine code, whether HTML, CSS, JavaScript, PHP, Ruby or
+	whatever your journey brings you to, when you find something you don't
+	understand, look it up by your favorite search engine to find out
+	what it does. Millions before you have asked the same questions, and 
+	the answers are all out there! 
+	
+	For example, if you don't know what the "overflow" attribute in CSS 
+	means, typing "css overflow" into your search favorite will bring back 
+	lots of results.
+	
+	Once you learn what the mystery code does and try to use it, if 
+	you have trouble, again, search is your friend. "css overflow why scroll
+	bars" will quickly tell you that setting "overflow: auto" will cause 
+	scroll bars to appear on a container that is smaller than the
+	content it is being asked to contain.
+	
+	And so on. You can achieve great things just by asking questions and 
+	trying to understand the answers you read. As an example, I've used 
+	Google dozens of times in putting this page together. I can't remember 
+    every nuance, but I have a 	general idea of how to approach a problem 
+    and then seek out the details.
+	
+	Speaking of which:
+	
+	http://stackoverflow.com 
+	
+	This site deserves special mention as a resource. This is a community-
+	based website that you will find over and over in search results when
+	you're looking for answers to coding questions. Someone there is an 
+	expert on the problem you're facing!
+	
+	======
+
+	This code will have extensive comments, far more than you would
+	normally find. Comments can be minimal for published pages of a public
+	website, but anything you do that's "tricky" should be commented in the
+	local copy you keep. 
+	
+	Note I am manually breaking lines for comments; not a requirement, but it 
+	does mean that when you have the source open in a narrow window, the nice 
+	indentation is kept intact. Also, beware of a minor gotcha in html comments:
+	try not to use more than one dash in a row. Some older browsers see two
+	or more dashes and think you're done with your comment!
+	
+	======
+
+	Above, we declared the document to be HTML 5. This comment could be above
+	that declaration, but I prefer for the very first item in a page to be 
+	code. In some coding languages, extra spaces or comments before the first
+	code chunk can kill the script, and therefore it's a good habit to get into.
+	
+	And we're off!
+-->
+
+<html>
+
+	<!--
+		The world's most basic web page is this:
+		
+		<html><head><title></title></head><body></body></html>
+		
+		Those are the only required elements. So we need to be sure those are
+		included in our page.
+	-->
+
+	<head>
+	
+		<!-- 
+			Every web page needs a title! Note it is considered good practice
+			to repeat the name of the site on inside pages, usually in the form
+			of "My Page Title - My Website".
+		-->
+		
+		<title>
+			Happy Herders Border Collie Rescue
+		</title>
+		
+		<!-- 
+			Next, we're going to set some meta tags:
+			
+			Character set: It's considered essential to include the character
+			set...this information is supposed to be sent by the web server
+			but it is not, surprisingly often. "utf-8" is the most common these
+			days, as it supports multibyte characters used by many languages.
+			
+			Description: Just what it says, a short description of the web page.
+			Some search engines use this in their search results, and other web 
+			services use them as well.
+			
+			There are many more meta tags - for example, you can use them to redirect pages,
+			provide services like Facebook or Twitter with information that will
+			make their "share" services work better, and much more.
+		-->
+			
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="description" content="Happy Herders Border Collie Rescue is located in the Puget Sound region of Washington State. We help find new homes for these focused, energetic, and loving dogs.">
+		
+		<!--
+			Every web page needs a style sheet. It will control what your
+			page looks like. An ideal to aim for: If you remove your style sheet,
+			is your page still readable, with a logical flow of information?
+			
+			This cannot always be achieved, but we can try! When you come across
+			a discussion about separating content from presentation, this is what
+			is being talked about. It's an interesting but hairy subject, with
+			almost constant exceptions to the rules. But again, aim for the ideal,
+			and live with the small compromises you must make.
+			
+		-->
+		
+		<link href="includes/happyherders-commented.css" rel="stylesheet">
+		
+		<!--
+			You can link to various scripts in the head, as well,
+			but best practice is to place your scripts just before the closing 
+			"body" tag - in this way, the main page can load before the site starts
+			working on loading and parsing the scripts.
+		-->
+
+	</head>
+	
+	<!--
+		Below: The body tag contains the actual content of the page. It's a good idea to
+		give it a unique class name, which you can use to reference items in your
+		style sheet. There are times in more complex coding where you end up
+		"fighting" the styles that are added by software you cannot directly edit.
+		Adding a class here is an arrow in your quiver in that fight!
+		
+		Note that for all HTML elements and their attributes, best practice is to use 
+		lowercase letters and dashes.
+		
+		It is not essential, but also try to stay away from generic class names.
+		Again, in your future, you may use some third-party add-ons
+		and you may find that a very generic class like 
+		"main" is used by the other program. A name like "hh-main" is much 
+		better and unlikely to conflict.
+	-->
+
+	<body class="hh-page">
+	
+		<!--
+			Using "id" for CSS purposes is nearly identical to using "class", but there 
+			are important differences. Namely, IDs must be unique, but classes
+			can be repeated. IDs are also very useful for targeting a single item
+			on a page; IDs and classes can be used at the same time. When you
+			get into JavaScript, you will find yourself doing just that. For example,
+			if you had a list of dogs, you might assign the container each is in
+			a class of "hh-dog" but also assign each a unique ID, like "hh-dog-7732".
+			You can use the class as a way to provide visual style, while using
+			the ID to allow a script to, say, highlight "Fido" when her name is
+			clicked elsewhere on the page.
+			
+			See: http://css-tricks.com/the-difference-between-id-and-class/
+			
+			Below I've defined some main containers, and given them IDs for our site.
+			We're going to have:
+			
+				Page top, containing the site name, logo and such.
+				
+				Page navigation, which contains our, you guessed it, navigation.
+				
+				Page main, containing the content. This will be divided between a
+				main area and a sidebar, a very common web layout.
+				
+				Page foot, which will contain a few links and contact information.
+				
+			Within those will be other containers for specific content items. 
+			
+			When creating a structure like this, think of the process in terms of 
+			"what items need to stick together, what items can or should be their own
+			container?"
+			
+			For example, if you put your nav inside the top section (because it's going
+			to be horizontal and *looks* like it's part of the page header), it could 
+			lead to a lot of editing of every page if you decide six months from now
+			to make it vertical, beside the main content.
+			
+			On the other hand, if you know the sidebar will always be beside the main
+			content, it makes sense to group them in the same container.
+			
+			Note that I've commented next to some closing "div" tags what div id they're 
+			closing. This is helpful on long pages when you're coding and come across 
+			what seems like a random closing div..."what's that from?"
+			
+		-->
+		
+		
+		<!--
+			One of the biggest favors you can do yourself when building web pages, especially
+			as you start to try more complex layouts, is to surround your entire page
+			layout with a container div. 
+			
+			This allows you a lot more flexibility to 
+			style your page. (You can style
+			some aspects of the "body" tag, but not a lot.) Here,
+			this will allow us to give the body a different background color,
+			and to make hh-container into a box containing the page.
+		-->
+	
+		<div id="hh-container">
+
+			
+			
+			<!-- hh-top contains the page's visual header -->
+		
+			<div id="hh-top">
+			
+				<!-- Our logo is an image. Note that it has an alt tag, as images should -->
+			
+				<img class="hh-top-logo" src="images/logo.png" width="130" height="113" alt="happy herders border collies">
+				
+				
+				<!-- 
+					I've elected to present the site title in styled text, but this could be a graphic 
+					
+					Note the second part of the title is surrounded by a span. A span can surround text
+					content just like a "<strong>" or "<em>" tag, but it doesn't have any style associated
+					with it by default. It's a way of being able to use a style sheet to say "make the words
+					within this tag do this." In this case, we're going to break the title into two lines
+					with the <br> tag and then use the span to make the second line of type smaller and italic.
+				-->
+				
+				<h2 class="hh-top-title">
+					Happy Herders<br>
+					<span class="second-line">Border Collie Rescue</span>
+				</h2>
+				
+				<!-- 
+					A slogan is a handy way to reinforce in a few words what your site is about.
+					Note that text elements should mostly be contained within tags that are designed to
+					hold text.
+				-->
+				
+				<p class="hh-top-slogan">
+					Helping Washington State Border Collies find new homes  
+				</p>
+			
+			</div> <!-- end #hh-top  -->
+			
+			
+			
+			<!-- nav contains our site navigation. Best practice is to present this as an unordered list -->
+			
+			<div id="hh-nav">
+				
+				<!-- 
+					It generally is best practice to present your navigation menus as unordered 
+					lists, nested to match the organization of your site's content.
+
+					We're going to use some simple CSS to make this display as we want it to, 
+					and even show and hide subpages when the parent page is rolled over.
+					
+					Note that you should always have a page in any directory called "index.html".
+					It can be blank, or a redirect, or even a help page, but doing this will keep
+					people from trying to explore parts of your site you don't want them visiting.
+					
+					It also prevents people from cutting off the page in their browser bar in hopes
+					of finding a parent page and then being rudely dropped into a directory.
+				-->
+			
+				<ul class="hh-menu">
+				
+					<!-- By providing an "active" class on the current page's li, we can style it differently! -->
+				
+					<li class="active">
+						<a href="index.html">Home</a>
+					</li>
+					
+					<li>
+						<a href="pages/index.html">Adopt a Dog!</a>
+						
+						<!--
+							Note here that the subpages of "adopt me!" are in another UL nested
+							within this one. "Nesting" is what HTML and coding is all about, and
+							this is a good way to organize your navigation. It is important to
+							note that the <ul>, its items, and the closing </ul> are all within this <li>
+							- not between this <li> and the next one.
+						-->
+						
+						<ul>
+						
+							<li>
+								<a href="pages/athletes.html">Athletic Champs</a>
+							</li>
+							
+							<li>
+								<a href="pages/companions.html">Loving Companions</a>
+							</li>
+						
+						</ul>
+						
+					</li> <!-- close adopt -->
+					
+					<li>
+						<a href="pages/donate.html">Donate</a>
+					</li>
+					
+					<li>
+						<a href="pages/about.html">About Us</a>
+					</li>
+				
+				</ul>
+				
+
+			
+			</div> <!-- end #hh-nav -->
+			
+			
+			
+			<!-- 
+				hh-main contains our main site content.
+			-->
+			
+			<div id="hh-main">
+			
+				<!--
+					This div contains our main site content. It's generally agreed that a page 
+					should contain only one <h1> tag,
+				
+				-->
+			
+				<div id="hh-main-content">
+				
+					<h1>
+						Welcome to Happy Herders!
+					</h1>
+					<p>
+						<strong>Border collies</strong> are intense, loyal and very smart dogs that can range in size from under 20 to over 60 pounds--they are known and bred for their very strong herding instincts, put to good use by shepherds the world over. While they can live happily in apartments, border collies need "work"--things to do both mentally and physically, such as learning tricks and playing ball--and are not a good choice for people who want a dog they can leave alone for long periods.
+					</p>
+					<p>
+						<img src="images/front_large.jpg" width="540" height="361" alt="courtesy of http://www.flickr.com/photos/lillymanion/">
+					</p>
+					<p>
+						Border collies will repay your investment of time and dedication by displaying amazing loyalty, and will astound you with their smarts. It is not a coincidence that when you learn of an incredible canine feat, it's very often a border collie as the featured hero. It doesn't hurt their popularity that they are among the most beautiful dogs in the world, either!
+					</p>
+					<p>
+						(We <em>think</em> this is all part of their plan for world domination, but we're not smart enough to understand their plan!)
+					</p>
+					<p>
+						Border collies are mostly "working dogs", with far looser restrictions on appearance than an AKC breed<sup>*</sup>, and therefore can display a large range of coats, coloring, size and temperaments. This generally means they have far fewer genetic problems than a "purebred" dog, and it's not difficult to find a border collie suited to you and your lifestyle.
+					</p>
+					<p>
+						Please note, though, that their intelligence, strong herding instincts and high energy levels make them potentially difficult companions for families with young children or for individuals unable to give them the attention and exercise they need.
+					</p>
+					<ul class="footnote">
+						<li>
+							There are AKC border collies now, a move not without controversy. At Happy Herders we don't pay any attention to whether a dog is AKC registered or not, and much prefer the healthier approach a "working dog" breeder takes!
+						</li>
+					</ul>
+				
+				</div><!--
+				
+				Trick: When using "inline-block" to make items appear next to each other, make sure you connect the divs 
+				that display type with an HTML comment tag (like I've done here) to prevent unwanted space.
+				
+				--><div id="hh-main-sidebar">
+				
+					<!--
+						The sidebar often stacks up boxes of information - promoting another page 
+						on the site, for example, or displaying news bulletins.
+						
+						To foster this, we're going to have a class define a box to go around 
+						chunks of content. The ID is not essential but will help us if we need to
+						find a specific item in the future, say with JavaScript, to recognize when
+						a site user puts their mouse over it.
+					-->
+				
+					<!-- first sidebar item -->
+				
+					<div id="hh-side-1" class="hh-sidebar-item">
+					
+						<h3>
+							Featured Dog
+						</h3>
+						<a href="pages/athletes.html">
+							<img src="images/becky.jpg" width="120" height="160" alt="image courtesy http://www.flickr.com/photos/woaw/" class="alignright">
+						</a>
+						<h4>
+							Becky
+						</h4>
+						<p>
+							Becky likes nothing more than a game of ball. She needs to be the only dog in her new home, but she <em>loves</em> people.
+						</p>
+						<a href="pages/athletes.html" class="hh-button">Learn More!</a>
+					
+					</div>
+					
+					<!-- second sidebar item -->
+					
+					<div id="hh-side-2" class="hh-sidebar-item">
+					
+						<h3>
+							More About Border Collies
+						</h3>
+						
+						<ul>
+						
+							<li>
+							
+								<!--
+									Links that lead a user off site are often set to launch a new tab.
+									This is done via the "target" attribute. This should be set to "_blank"
+									to ensure a new tab.
+								-->
+								
+								<a href="http://en.wikipedia.org/wiki/Border_collie" target="_blank">About the Breed</a>
+								<p>
+									A great overview of these working dogs on Wikipedia.
+								</p>
+								
+							</li>
+							
+							<li>
+							
+								<a href="http://www.bcrescuenc.org/border-collie-as-pet.htm" target="_blank">Being a Good Border Collie Caretaker</a>
+								<p>
+									Border collies are intensely rewarding for the right person. Is that you? From our friends at BCrescueNC.org.
+								</p>
+							
+							</li>
+						
+						</ul>
+					
+					</div>
+				
+				</div>
+				
+			</div> <!-- end #hh-main -->
+			
+			<!--
+				Footers are useful places to gather information you'd like
+				to present on all pages of your site. Here we're using some
+				divs with the same class to hold the information. Each div
+				will get the same style.
+			-->
+			
+			<div id="hh-foot">
+				
+				<div class="hh-foot-block">
+				
+					<h3>
+						Where We Are
+					</h3>
+					<p>
+						Happy Herders Border Collies<br>
+						123 Any Street<br>
+						Clinton, WA 98236
+					</p>
+					<p class="copyright">
+						By Appointment Only
+					</p>
+				
+				</div><!--
+				
+				Trick: When using "inline-block" to make items appear next to each other, make sure you connect the divs 
+				that display type with an HTML comment tag (like I've done here) to prevent unwanted space.
+				
+				--><div class="hh-foot-block">
+				
+					<h3>
+						Contact Us
+					</h3>
+					<p>
+						<a href="mailto:hh@example.com">Click to send email</a>
+					</p>
+					<p>
+						425-555-1212 phone<br>
+						425-555-9999 fax
+					</p>
+					<p class="copyright">
+						Phone hours: 11AM - 3PM, M-F
+					</p>				
+				
+				</div><!--
+				
+				Trick: When using "inline-block" to make items appear next to each other, make sure you connect the divs 
+				that display type with an HTML comment tag (like I've done here) to prevent unwanted space.
+				
+				--><div class="hh-foot-block">
+				
+					<h3>
+						Top Rescue
+					</h3>
+					<p>
+						We are proud to be one of the nation's top rescues according to the <strong>International Border Collie Society</strong>.
+					</p>
+					<p class="copyright">
+						&copy; Happy Herders
+					</p>
+				
+				</div>
+			
+			</div> <!-- close #hh-foot -->
+			
+			<!--
+				Here would be the place to insert JavaScript, if you have any.
+			-->
+				
+			
+		</div> <!-- close #hh-container -->
+		
+	</body>
+
+</html>

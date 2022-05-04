@@ -1,0 +1,840 @@
+/* 
+	This is the style sheet for our simple demo site! 
+	
+	======
+	
+	IMPORTANT CSS TIP #1:
+	
+	When styling, it's very helpful to have as many different browsers on
+	your computer to look at your new site as you can. If you're on a Windows
+	machine, for example, having the latest IE, Firefox and Chrome helps 
+	ensure that what you're doing works well in all of the major players.
+	
+	This also lets you take advantage of a nifty feature of Firefox and Chrome: 
+	you can right-click on anything on a web page and select "examine element"
+	from the menu that appears. This will open the developer's window -
+	one of the things available (generally on the right) is a list of styling 
+	rules that have been applied to the element, and where they came from. 
+	
+	This is insanely helpful!
+	
+	The styling thus exposed is in two flavors: "rules" and "computed".
+	
+	"Rules" shows ALL of the rules in the style sheets that could have applied
+	to this element, in the order they were applied, from last to first. Rules
+	that were overwritten are shown crossed out.
+	
+	"Computed" shows only those rules that were actually applied (and where 
+	they came from). 
+	
+	With the knowledge thus gained, you can adjust your styles, knowing that in CSS:
+		
+		specific > general
+		
+		
+	The only exception to this is if a more general rule has the "!important" flag
+	added. "!important" is useful but easy to abuse. Read more here:
+	
+	http://css-tricks.com/when-using-important-is-the-right-choice/
+	
+	Finally, there is often a "box model" tab that will show you what size the
+	browser is allowing for the element, and where those sizes are added. This
+	can be helpful if you're asking for a specific size and on-screen it's the wrong
+	size. You may have forgotten that padding is *added* to specified sizes while
+	margin is not, or that borders are adding a bit, which needs to be taken into
+	consideration.
+
+	======
+	
+	IMPORTANT CSS TIP #2:
+	
+	For all things CSS related, I recommend using your favorite
+	search engine; someone else has had your problem and has fixed it!
+	
+	One of the toughest decisions you need to make is how ancient a
+	browser you wish to support. For this sample site, I am throwing
+	IE7 to the wolves; there are advanced ways to make that clunker work, 
+	but IE7 is now *three* versions out of date. 
+	
+	You may discover that a particular job requires supporting an outdated 
+	browser. That will require research and, in my case, hair loss. Just be
+	careful about promises made to support ancient software; some things
+	may just not be possible in older browsers.
+	
+	======
+	
+	THINGS TO KEEP IN MIND:
+	
+	Remember:
+	
+		# is for IDs
+		. is for classes
+	
+	Spaces matter!
+	
+		#my-container .my-nifty-box { stuff }
+		             ^ space
+		
+	Will style all items within a parent who has the attribute of 
+		
+		<div id="my-container">
+	
+	with the attribute 
+		
+		<div class="my-nifty-box">
+			
+	So if you have three items with "my-nifty-box" as a class, all three
+	will be styled with your rules. But if you do this:
+	
+		#my-container.my-nifty-box { stuff }
+		             ^ no space
+					 
+	Only an item which has BOTH attributes set will be styled that way.
+	Assuming you're obeying the "rules" and have no repeated IDs, none of 
+	the items will be styled--the browser is looking for an item with both
+	attributes set:
+	
+		<div id="my-container" class="my-nifty-box">
+		
+	Parents
+	
+	All elements in the chain are parents of the current element, and contribute
+	applicable styles to the child:
+	
+		<div style="color: blue;">
+			Hi!
+			<div style="font-size: 20px;">
+				Howdy!
+				<div style="font-style: italic">
+					Hello!
+					
+	"Hi" is blue, "howdy" is blue and 20 pixels tall, and "hello" is blue, 20 pixels tall
+	and italic. When trying to figure out why something is being added (or not added) 
+	remember this chain.
+	
+	Resources
+	
+	A subject of Great Debate are the units to measure fonts, containers, etc.
+	in. We're using pixels for simplicity here, but there are ways of sizing
+	that make pages more easily rendered for larger or smaller devices, or
+	for printing. A good subject to research!
+	
+	An excellent resource for all things CSS is 
+	
+	http://css-tricks.com/ 
+	
+	If you're doing a search to find answers and css-tricks shows up in the list,
+	generally a solution--or at least understanding as to why there isn't a
+	solution, and to try something different--is at hand.
+	
+*/
+
+/* ===============================================================================
+	SITE-WIDE (GENERAL) STYLES 
+   =============================================================================== */
+
+/* 
+	The first use of any CSS rule will be commented! Use your search engine to look up 
+	terms for more info, or look up the attribute, such as "font-weight". */
+
+	* {						/*  "*" is a wildcard, which matches all tags  */
+		padding: 0; 		/*  reset all padding to 0 for consistency across browsers  */
+		margin: 0; 			/*  reset all margins to 0 for consistency across browsers  */
+		}
+	p {									/*  unless a more specific rule is set, all <p> tags will be styled this way  */
+		font-size: 16px;				/*  set font size  */
+		line-height: 22px;				/*  set spacing between lines of type  */
+		font-family: georgia, serif;	/*  Georgia is a serif font, if it's not present, use system serif font - this is known as a "css font stack"  */
+		color: #333333;					/*  set color to a dark grey  */
+		margin: 0 0 10px 0;				/*  margin shorthand: instead of using margin-top, etc., you can combine them. Order is top, right, bottom, left  */
+		}
+	li, td {								/*  We're applying the same styles to a couple of different tags, you can chain as many as you want */
+		font-size: 14px;
+		line-height: 19px;
+		}
+	h1, h2, h3, h4, h5, h6 { 
+		color: #6f350b;
+		margin: 10px 0;					/*  margin shorthand again: if you use only two numbers, first is both T & B, second both L & R  */
+		padding: 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		}
+	h1 {
+		margin-top: 0;			/*  you can also just set the individual margins this way  */
+		margin-bottom: 20px;
+		font-size: 26px;
+		line-height: 28px;
+		font-weight: normal;	/*  headline styles are normally bold, but at large sizes that's too much. Resets to not bold. */
+		}
+	h2 {
+		font-size: 22px;
+		line-height: 25px;
+		}
+	h3 {
+		font-size: 19px;
+		line-height: 22px;
+	}
+	sup {						/*  the "sup" tag controls superscript. The font size is usually way too large, and messes up line-heights  */
+		font-size: 10px;
+		}
+	ul.footnote {				/*  set the margin on <ul> tags with the "footnote" class  */
+		margin: 20px 0 0 20px;
+		}
+	.footnote li, .imagecaption p {
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 12px;
+		line-height: 17px;
+		margin-top: 5px;
+		margin-bottom: 0;
+		color: #888;
+		}
+	a {
+		color: #bb2d07;
+		text-decoration: none;			/*  links are normally underlined, we want them to be plain...  */
+		}
+	a:hover {							/*  :hover is known as a "pseudoclass"; when a user hovers over an <a> tag, we'll apply the following styles to it  */
+		text-decoration: underline;		/*  ...until the user mouses over them, when we show an underline  */
+		}
+	blockquote {
+		margin: 20px 0;
+		padding: 15px;
+		border-top: 2px dotted #795228;
+		border-bottom: 2px dotted #795228;
+		font-size: 18px;
+		line-height: 24px;
+		letter-spacing: 1px;			/* letter-spacing controls the amount of space between letters */
+		font-style: italic;
+		color: #643e15;
+		}
+	blockquote .credit {
+		font-style: normal;
+		display: block;					/* force text to new line, spans are normally "inline" */
+		text-align: right;				/* align the text to the right instead of to the left */
+		}
+		
+	/* images and in-text info boxes, mostly */	
+		
+	.imagecaption p {
+		text-align: center;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 14px;
+		line-height: 17px;
+		margin-top: 5px;
+		margin-bottom: 0;
+		color: #888;
+		}
+	.imagecaption img {
+		display: block;
+		}
+	.alignright {
+		float: right;					/*  when an element is assigned this class, it will "float" to the right; other items, if they fit, flow around it */
+		margin: 0 0 5px 10px;
+		}
+	.alignleft {
+		float: left;
+		margin: 0 10px 5px 0;
+		}
+	.availablebox {
+		background: #f5c07c;
+		padding: 12px;
+		margin: 0 6px 15px 6px;
+		border: 1px solid #be7a23;
+		}
+	.availablebox h3 {
+		text-align: center;
+		margin: 0 0 5px 0;
+		padding: 0;
+		}
+	.availablebox.imagecaption p {		/* note that the two classes do not have a space between them, so this rule only applies if both classes are present */
+		color: #555;
+		}
+	.availablebox p .hh-button {
+		margin-top: 5px;
+		}
+
+
+	
+/* ===============================================================================
+	LAYOUT OF MAIN PAGE BLOCKS
+   =============================================================================== */
+	
+/* 
+	body
+		parent: html
+		
+	Note you cannot do a whole lot to the body tag with CSS. You can set its 
+	background color and a few other attributes, though. This allows us to make 
+	the page behind our container a different color. */
+	
+	body {
+		background: #faf7e7;
+		}
+	
+/*	
+	#hh-container
+		parent: body
+	
+	This is the container for all of our content. We want to make it a centered
+	box with a border and shadow. The shadow is added in at the bottom of this
+	sheet since it needs a bit more explanation.
+	
+	Remember when setting the width of a site (i.e., the main container), you need 
+	to account for all likely users and their devices. We're setting a very simple 
+	fixed width here, but being able to adapt to mobile devices is increasingly 
+	important. Read about "adaptive design" and "responsive design" via your search.
+	
+	"position" refers to the way this element relates to its parent element. 
+	If you plan on using "absolute" positioning for an element in your page,
+	ensuring the parents of that element all have declared positions is important. 
+	A lot of "weird" CSS behavior can be laid at the door of not understanding positioning. */
+
+	#hh-container {
+		position: relative;				/* it's good practice to position all elements */
+		width: 960px;					/* make a box 960 pixels wide */
+		margin: 40px auto;				/* make the box center itself in the browser, with 40 top and bottom */	
+		background-color: #ffffff;							
+		border: 1px solid #b29866;		/* add a 1-pixel solid border around box */
+		}
+
+/*	
+	#hh-top
+		parent: #hh-container
+	
+	Page header. We're going to give it a background color and image, aligned to
+	the right. We're going to absolutely position the logo, title, and slogan 
+	divs within it to control their positioning.
+	
+	Because we want this section to always be the same height, we'll set that.
+	Normally, it's good practice to let the browser determine the height of the
+	element.
+	
+	Background image licensed for CC use by http://www.flickr.com/photos/mtrappitt/ . */
+	
+	#hh-top {
+		position: relative;	
+		height: 160px;										/* set height */
+		background-color: #675c5c;
+		background-image: url('../images/header-bg.jpg');	/* add an image to the background, note the path is relative to this sheet, not the page! */
+		background-position: bottom right;					/* position this image bottom edge of image to bottom edge of parent, right edge to right edge */
+		background-repeat: no-repeat;						/* only place this image in the BG once */
+		border-bottom: 1px solid #b29866;					/* add a border to the bottom */
+		}
+
+/*	
+	#hh-nav
+		parent: #hh-container
+	
+	This is the container for our navigation menu. The only thing unusual here is
+	we're setting the "z-index". This is a concept many find difficult to understand,
+	so here's a good article on it:
+	
+	http://coding.smashingmagazine.com/2009/09/15/the-z-index-css-property-a-comprehensive-look/
+	
+	In our case, because this container has a z-index set to a fairly high number, it 
+	will appear, visually, in front of all other page elements. This allows our 
+	flyout menu to appear above the body content. */
+
+	#hh-nav {
+		position: relative;
+		height: 34px;
+		background: #8e5025;
+		border-bottom: 1px solid #b29866;
+		z-index: 100;					/*  set z-index so menu is always on top, see above  */
+		}
+
+/*
+	#hh-main
+		parent: #hh-container
+	
+	Nothing unusual here, we're just defining the box to hold the main content. */
+
+	#hh-main {
+		position: relative;
+		padding: 40px;
+		}
+		
+/*	
+	#hh-foot
+		parent: #hh-container
+	
+	We want to have three evenly sized boxes in the footer, so we need for the 
+	size after padding in this box to be divisible by three. We're also going to
+	leave the padding off the right-hand side so we don't have to make a special 
+	class or do advanced CSS to make the last element fit.
+	
+	We know this div will be the same with as the parent, 960px, since that is 
+	inheirited. Padding will rob any children of that space, and we want about 40
+	pixels on the left. 960 - 40, 920, is not divisible by three. But 960 - 39, 921,
+	is. So when we style the foot blocks we know each has 307 pixels to play in. */
+
+	#hh-foot {
+		position: relative;
+		padding: 40px 0 40px 39px; 
+		background: #382f2f;
+		}
+	
+/* ===============================================================================
+	HEADER BLOCKS
+   ============================================================================ */
+	
+/* 
+	.hh-top-logo
+		parent: #hh-top
+	
+	We're using a CSS trick here to turn an <img> tag, normally an inline
+	element, into a block-level element.
+	
+	We then position that element absolutely. This means it is removed from the
+	page, meaning other elements can ignore it when trying to place themselves,
+	and then visually placed back at the precise spot we ask it to be placed at.
+	
+	All positions are relative to the nearest parent element that also has a
+	position set, whether relative, absolute or fixed. The normal default is
+	"static", which will be ignored for placement purposes. If you use absolutes,
+	position their parents! "relative" generally has the same effect as static.
+	
+	Absolutely placed elements, as a general rule, should always have a width, 
+	height, position on the x-axis (top or bottom) and position on the y-axis
+	(left or right) set. */
+	
+	.hh-top-logo {
+		position: absolute;		/* position this item precisely, and make sure it doesn't interfere with other items */
+		display: block;			/* this is an img tag, which is normally "inline". Make "block". */
+		top: 20px;				/* place it 20px from top edge of hh-top */
+		left: 20px;				/* and place it 20px from the left edge of hh-top */
+		width: 130px;			/* the width and height match the image */
+		height: 113px;
+		}
+
+
+/* 
+	.hh-top-title
+		parent: #hh-top
+	
+	Virtually a duplicate of the above. however, "h1" is already a block-level
+	element, though, so we don't need to set that. */
+	
+	.hh-top-title {
+		position: absolute;
+		top: 40px;
+		left: 162px;
+		width: 500px;			/* Enough room to fit the type in */
+		height: 40px;			/* Again, enough to fit the type in */
+		color: #ff9834;
+		font-size: 36px;
+		line-height: 28px;
+		font-weight: normal;
+		}
+		
+/* 
+	.second-line
+		inine rule
+		
+	The next rule will make the text in the second-line span look different.
+	
+	By placing ".hh-top-title" in front of ".second-line" we're telling
+	the browser to only make ".second-line" items act this way when they're
+	inside of .hh-top-title. If you placed a span with ".second-line" around 
+	text in the main article, nothing will happen to that text unless you
+	wrote a more general rule, or made a .second-line rule specific to the 
+	main article.
+	
+	In general, making special cases specific like this helps keep styles
+	from creeping out of the containers you hoped they'd stay inside of.
+	
+	The flip side is a very general rule of something like 
+	
+		.hh-red { color: red; }
+		
+	Would be usable everywhere on the site to make the color of the item red. */
+		
+	.hh-top-title .second-line {
+		font-size: 28px;		/* smaller font here for second line */
+		font-style: italic;		/* We'll also make it italic */
+		}
+
+/* 
+	.hh-top-slogan
+		parent: #hh-top
+	
+	Also a duplicate in concept. <p> is also block-level. */
+	
+	.hh-top-slogan {
+		position: absolute;
+		top: 115px;
+		left: 162px;
+		width: 600px;
+		height: 30px;
+		font-size: 18px;
+		line-height: 18px;
+		color: #fff;
+		}
+		
+/* ===============================================================================
+	NAVIGATION MENU
+   =============================================================================== */
+
+/*
+	Navigation menus are best coded as <ul> lists. Now we are going to
+	change the CSS of our menu to make it appear as a horizontal row of buttons, 
+	with a bonus of hide-and-show submenus if the top button has child pages.
+	
+	Things we want to do:
+	
+		- clear normal <ul> and <li> styling
+		- Hide the child page menus until we want to see them
+		- Visually style our tp-level buttons
+		- Visually style our submenus
+		- Add rules to show the child page menus
+		
+	The beauty of CSS is we can make all that happen in just a few rules! 
+	
+	Note that this menu only deals with two levels. Additional levels are easy enough,
+	but you'd need additional rules to show and hide the sub-sub-menus, and position them
+	properly. There are lots of great tutorials on the web; look up "pure CSS menus". */
+   
+	/* Clear normal menu styling */
+	
+	.hh-menu {								/* this is the top-level <ul> tag */
+		position: relative;					/* make sure it's positioned */
+		margin: 0;							/* reset the margin */
+		padding: 0;							/* reset the padding */
+		list-style-type: none;				/* hide all bullets */
+		}
+
+	.hh-menu li {								/* Note that this style affects ALL <li>s in the nav, including submenus */
+		display: block;						/* Change display to block, so we can... */
+		float: left;						/* Float them left, which allows them to be in a single row */
+		position: relative;					/* And be sure we position them, again */
+		}
+		
+	/* Hide submenus */	
+		
+	.hh-menu ul {								/* This hides all <ul>s within the main <ul> */
+		display: none;
+		}
+	
+	/* Visually style the individual menu items */
+	
+	.hh-menu li a {							/* By using the <a> to style the items, we can make all visual styling happen in one place. */
+		display: block;						/* <a> tags are normally inline, we want this to be "block" so it fills the <li> it's inside of */
+		height: 24px;						/* This height is equal to the height of the menu container ( #hh-nav ) less any top and bottom padding set here */
+		border-right: 1px solid #b29866;	/* Add a vertical line to the right edge of each "button" */
+		font-size: 20px;					/* Set font size */
+		color: #eede93;						/* Change color */
+		padding: 6px 20px 4px 20px;			/* Add space around box to make it pleasant to view, see regarding height, though, above */
+		}
+		
+	.hh-menu li.active a {						/* if the "button" has a class of "active" change BG color, useful for indicating current page */
+		background: #803026;
+		}
+	.hh-menu li:hover a {						/* These styles show the user a button is being moused over */
+		background: #98463c;
+		color: #fff;
+		text-decoration: none;				/* prevent underlines */
+		}
+		
+	/* Visually style the submenus...they inherit most of their styling from above, but need to make adjustments */
+		
+	.hh-menu li:hover ul li {							/* remove float so buttons in submenu stack */
+		float: none;
+		}
+	.hh-menu li:hover ul li a {							/* we need to add borders to the right, bottom and side of each item */
+		border-right: 1px solid #b29866;	/* adding borders to the top as well would result in a double-thick line */
+		border-bottom: 1px solid #b29866;
+		border-left: 1px solid #b29866;
+		width: 180px;						/* We set a width here so all buttons appear in a block together with a straight right edge */
+		color: #eede93;						/* We're changing back to the non-hover color. You could set the background here to be different... */
+		}
+
+	
+	/* :hover allows us to show or hide the submenus, adjust the submenu styling */
+	
+	.hh-menu li:hover ul {						/* If the item being hovered has a <ul>, change the following */
+		display: block;						/* The display was set to "none" above, hiding it. This will show it */
+		position: absolute;					/* We want to control where it appears */
+		top: 100%;							/* This is a neat trick: "top: 100%" is saying "put the top of this item at the top of the parent and then
+											   move it down 100% of the height of the parent" ...i.e., the bottom of parent! menu appears below button */
+		left: 0;							/* No indent from left of parent */
+		border-top: 1px solid #b29866;		/* Add line to separate from menu */ 
+		}
+	.hh-menu li:hover ul li:hover a {					/* Hover effects for submenus items, since the whole submenu already has the color from the original hover */
+		background: #803026;
+		color: #fff;
+		}
+		
+/* ===============================================================================
+	MAIN CONTENT CONTAINERS
+   =============================================================================== */
+
+/*
+	#hh-main-content, #hh-main-sidebar
+		parent: #hh-main
+		
+	There have been lots of tricks over the years to get content to appear in columns
+	next to each other, but the current "best" way is to use either the CSS3 table display
+	trick (look up via search if interested) or this method, declaring the items to be 
+	"inline-blocks".
+	
+	"inline" elements sit next to each other until they fill a container and then go to
+	the next line, do the same, and on. They cannot take on many attributes of blocks.
+	
+	"block" elements always start on a new line. 
+	
+	"inline-block" elements can have all of the properties of a block, but sit inline,
+	following the same flow rules as "inline" elements when the entire block is placed
+	on the page.
+	
+	In this case, we're going to size them in such a way that the main content area and
+	sidebar both fit "inline" within the parent hh-main container.
+	
+	A potential "gotcha" with this method is the end tag from one inline-block must sit 
+	right next to the start tag of the next inline-block in your code, or your browser 
+	will follow the rules and insert a space between them. If you're trying to be precise,
+	that's a problem.
+	
+	Look at the HTML code to see how you can use HTML comments to remove this space, or just
+	make your code a bit messier to look at and place the tags next to each other: </div><div> 
+	
+	Remember that the sum of all widths, horizontal margins and horizontal padding must
+	be less or equal to the total width of the parent...remembering to factor in any 
+	padding it has!  */
+   
+	#hh-main-content {
+		display: inline-block;
+		width: 540px;				
+		margin-right: 40px;
+		vertical-align: top;			/* "inline" elements normally align themselves to the "baseline" of all
+										   elements on the line. We want them to align to the top of the line of 
+										   elements */
+		}
+	#hh-main-content.fullwidth {			/* an alternative version of the main-content block. When the additional
+										   class "fullwidth" is applied, the block fills the space. This allows a
+										   layout without sidebar. We need to unset a few things we set for the other */
+		margin-right: 0;
+		display: block;
+		width: auto;
+		}
+	#hh-main-sidebar {
+		display: inline-block;
+		width: 260px;
+		background: #f0dac0;	
+		padding: 20px 20px 0 20px;
+		vertical-align: top;			/* All elements need to have this set */
+		margin-top: 48px;
+		}
+
+/* ===============================================================================
+	SIDEBAR BOXES
+   =============================================================================== */
+   
+/*	.hh-sidebar-item
+		parent: #hh-main-sidebar
+		
+	This is the colored box surrounding each individual sidebar item. */
+			
+	.hh-sidebar-item {
+		background: #e9c396;
+		padding: 10px;
+		margin-bottom: 20px;
+		}
+		
+/* ===============================================================================
+	SIDEBAR BOX CONTENT STYLES
+   =============================================================================== */
+		
+	.hh-sidebar-item h3 {
+		background: #9a5a0e;
+		margin: -10px -10px 10px -10px;		/* We're using s trick to make it appear
+											   that the box has a shaded bar at top
+											   with a title in it. What we're doing is
+											   setting the margins equal to the negative
+											   value of the padding on the .hh-sidebar-item
+											   box. The bottom value should be used normally
+											   since it doesn't have to compensate for any
+											   padding */
+		padding: 4px 10px;
+		color: #fff;
+		font-size: 14px;
+		text-transform: uppercase;			/* No matter how they're typed, we want the letters
+											   to appear uppercase. This is the right way to
+											   do all caps on the web: If, in the future, you
+											   want to switch to lowercase, you would have to
+											   retype all the content if you simply typed THEM
+											   IN UPPERCASE when entering content. This way, 
+											   you just remove the rule and you're done! */
+		}
+	.hh-sidebar-item h4 {
+		font-family: georgia, serif;
+		font-size: 18px;
+		line-height: 18px;
+		margin: 0 0 5px 0;
+		font-style: italic;
+		color: #a03417;
+		}
+	.hh-sidebar-item p {
+		color: #111;
+		font-size: 14px;
+		line-height: 17px;
+		}
+	.hh-sidebar-item ul {
+		list-style-type: none;
+		}
+	.hh-sidebar-item li {
+		padding: 5px 0;
+		}
+	.hh-sidebar-item li a, .hh-sidebar-item li h5 {	/*  Here, we're making all <a> tags within a list in
+													the sidebar into blocks and giving them a lower 
+													border */
+		display: block;
+		padding: 0 0 5px 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 16px;
+		line-height: 16px;
+		margin: 0 0 5px 0;
+		font-weight: bold;
+		border-bottom: 1px dotted #675c5c;
+		}
+		
+/* ===============================================================================
+	ADOPT A DOG BOXES
+   =============================================================================== */
+   
+	#hh-adopt-container {
+		position: relative;
+		min-height: 395px;					/* make sure it's always a bit higher than the adopt boxes */
+		}
+	.hh-adopt {
+		height: 355px;
+		background: #613127;
+		position: relative;
+		margin: 15px 0;
+		border: 1px solid #bb791e;
+		}
+	.hh-adopt-image {
+		float: left;
+		width: 540px;
+		height: 355px;
+		margin-right: 15px;
+		border-right: 1px solid #bb791e;
+		position: relative;
+		z-index: 5;							/* make sure it's above the dotted borders in the text box */
+		}
+	.hh-adopt-interest {
+		position: absolute;					/* always place button at bottom of box */
+		bottom: 15px;
+		right: 15px;
+		width: 305px;
+		height: 28px;
+		}
+	.hh-adopt-text {
+		position: relative;
+		padding: 15px;
+		}
+	.hh-adopt-text h3 {
+		margin: 0 0 5px 0;
+		padding: 0 0 6px 0;
+		color: #fff;
+		border-bottom: 1px dotted #bb791e;
+		}
+	.hh-adopt-text p {
+		font: 14px/18px 'trebuchet ms',trebuchet,sans-serif;
+		color: #f0ddc4;
+		margin: 0 0 5px 0;
+		border-top: 1px dotted #bb791e;
+		padding: 10px 0 0 0;
+		}
+	.hh-adopt-text p.hh-dog-stats {
+		padding: 0;
+		margin: 5px 0;
+		font-size: 12px;
+		line-height: 15px;
+		color: #ddb681;
+		border: 0;
+		}
+	.hh-adopt-text p.hh-dog-stats em {
+		color: #cda671;
+		}
+		
+/* ===============================================================================
+	FOOTER BOXES
+   =============================================================================== */
+
+	.hh-foot-block {
+		display: inline-block;
+		background: #23190f;
+		margin: 0 20px 0 0;
+		padding: 15px 20px;
+		width: 242px;
+		vertical-align: top;
+		min-height: 120px;			/* The min-height setting tells the browser to allow taller
+									   elements, but that these boxes should never be shorter
+									   than this dimension. This allows the entry of longer
+									   content accidentally without causing display problems,
+									   but makes the boxes all have the same height if they contain
+									   less content than this */
+		}
+		
+/* FOOTER BLOCK CONTENT */
+
+	.hh-foot-block h3 {
+		margin: 0 0 8px 0;
+		padding: 0 0 8px 0;
+		border-bottom: 1px solid #555;
+		color: #e4dfc7;
+		font-size: 18px;
+		line-height: 18px;
+		}
+	.hh-foot-block p {
+		color: #d2ccae;
+		font-size: 12px;
+		line-height: 18px;
+		margin: 0 0 5px 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		}
+	.hh-foot-block a {
+		color: #fff;
+		}
+	.hh-foot-block p.copyright {
+		color: #888;
+		margin: 0;
+		}
+		
+		
+/* ===============================================================================
+	ADVANCED TECHNIQUES
+   ============================================================================ */
+   
+/*
+	If you're interested, look up any attributes below you haven't run across to
+	gain an understanding of how they're used! Try:
+	
+		- box shadow
+		- border-radius
+		- text-transform
+	
+	*/
+
+	/* add shadow to main container */
+	#hh-container {
+		box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.3);
+		}
+
+	/* this creates a button-looking link to click on */
+	a.hh-button {		
+		border: 1px solid #fff;
+		border-radius: 6px;
+		background: #bb2d07;
+		display: inline-block;
+		padding: 5px 10px 6px 10px;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		color: #fff;
+		font-size: 12px;
+		line-height: 12px;
+		text-transform: uppercase;
+		margin-bottom: 5px;
+		box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.3);
+		}
+	a.hh-button:hover {
+		text-decoration: none;
+		background: #d9522e;
+		}

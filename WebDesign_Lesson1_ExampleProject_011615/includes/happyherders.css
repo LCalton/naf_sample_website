@@ -1,0 +1,455 @@
+/* ===============================================================================
+	SITE-WIDE (GENERAL) STYLES 
+   =============================================================================== */
+
+	* {
+		padding: 0;
+		margin: 0;
+		}
+	p {
+		font-size: 16px;
+		line-height: 22px;
+		font-family: georgia, serif;
+		color: #333333;	
+		margin: 0 0 10px 0;
+		}
+	li, td {
+		font-size: 14px;
+		line-height: 19px;
+		}
+	h1, h2, h3, h4, h5, h6 { 
+		color: #6f350b;
+		margin: 10px 0;
+		padding: 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		}
+	h1 {
+		margin-top: 0;
+		margin-bottom: 20px;
+		font-size: 26px;
+		line-height: 28px;
+		font-weight: normal;
+		}
+	h2 {
+		font-size: 22px;
+		line-height: 25px;
+		}
+	h3 {
+		font-size: 19px;
+		line-height: 22px;
+	}
+	sup {
+		font-size: 10px;
+		}
+	ul.footnote {
+		margin: 20px 0 0 20px;
+		}
+	.footnote li, .imagecaption p {
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 12px;
+		line-height: 17px;
+		margin-top: 5px;
+		margin-bottom: 0;
+		color: #888;
+		}
+	a {
+		color: #bb2d07;
+		text-decoration: none;
+		}
+	a:hover {
+		text-decoration: underline;
+		}
+	blockquote {
+		margin: 20px 0;
+		padding: 15px;
+		border-top: 2px dotted #795228;
+		border-bottom: 2px dotted #795228;
+		font-size: 18px;
+		line-height: 24px;
+		letter-spacing: 1px;
+		font-style: italic;
+		color: #643e15;
+		}
+	blockquote .credit {
+		font-style: normal;
+		display: block;
+		text-align: right;
+		}
+		
+	/* images and in-text info boxes, mostly */	
+		
+	.imagecaption p {
+		text-align: center;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 14px;
+		line-height: 17px;
+		margin-top: 5px;
+		margin-bottom: 0;
+		color: #888;
+		}
+	.imagecaption img {
+		display: block;
+		}
+	.alignright {
+		float: right;
+		margin: 0 0 5px 10px;
+		}
+	.alignleft {
+		float: left;
+		margin: 0 10px 5px 0;
+		}
+	.availablebox {
+		background: #f5c07c;
+		padding: 12px;
+		margin: 0 6px 15px 6px;
+		border: 1px solid #be7a23;
+		}
+	.availablebox h3 {
+		text-align: center;
+		margin: 0 0 5px 0;
+		padding: 0;
+		}
+	.availablebox.imagecaption p {
+		color: #555;
+		}
+	.availablebox p .hh-button {
+		margin-top: 5px;
+		}
+
+
+	
+/* ===============================================================================
+	LAYOUT OF MAIN PAGE BLOCKS
+   =============================================================================== */
+
+	body {
+		background: #faf7e7;
+		}
+	#hh-container {
+		position: relative;
+		width: 960px;
+		margin: 40px auto;
+		background-color: #ffffff;
+		border: 1px solid #b29866;
+		}
+	#hh-top {
+		position: relative;
+		height: 160px;
+		background-color: #675c5c;
+		background-image: url('../images/header-bg.jpg');
+		background-position: bottom right;
+		background-repeat: no-repeat;
+		border-bottom: 1px solid #b29866;
+		}
+	#hh-nav {
+		position: relative;
+		height: 34px;
+		background: #8e5025;
+		border-bottom: 1px solid #b29866;
+		z-index: 100;
+		}
+	#hh-main {
+		position: relative;
+		padding: 40px;
+		}
+	#hh-foot {
+		position: relative;
+		padding: 40px 0 40px 39px; 
+		background: #382f2f;
+		}
+	
+/* ===============================================================================
+	HEADER BLOCKS
+   =============================================================================== */
+
+	.hh-top-logo {
+		position: absolute;
+		display: block;
+		top: 20px;
+		left: 20px;
+		width: 130px;
+		height: 113px;
+		}
+	.hh-top-title {
+		position: absolute;
+		top: 40px;
+		left: 162px;
+		width: 500px;
+		height: 40px;
+		color: #ff9834;
+		font-size: 36px;
+		line-height: 28px;
+		font-weight: normal;
+		}
+	.hh-top-title .second-line {
+		font-size: 28px;
+		font-style: italic;
+		}
+	.hh-top-slogan {
+		position: absolute;
+		top: 115px;
+		left: 162px;
+		width: 600px;
+		height: 30px;
+		font-size: 18px;
+		line-height: 18px;
+		color: #fff;
+		}
+		
+/* ===============================================================================
+	NAVIGATION MENU
+   =============================================================================== */
+	
+	.hh-menu {
+		position: relative;	
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		}
+	.hh-menu li {
+		display: block;
+		float: left;
+		position: relative;
+		}
+	.hh-menu ul {
+		display: none;
+		}
+	.hh-menu li a {
+		display: block;
+		height: 24px;
+		border-right: 1px solid #b29866;
+		font-size: 20px;
+		color: #eede93;
+		padding: 6px 20px 4px 20px;
+		}
+	.hh-menu li.active a {
+		background: #803026;
+		}
+	.hh-menu li:hover a {
+		background: #98463c;
+		color: #fff;
+		text-decoration: none;
+		}
+	.hh-menu li:hover ul li {
+		float: none;
+		}
+	.hh-menu li:hover ul li a {
+		border-right: 1px solid #b29866;
+		border-bottom: 1px solid #b29866;
+		border-left: 1px solid #b29866;
+		width: 180px;
+		color: #eede93;
+		}
+	.hh-menu li:hover ul {
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		border-top: 1px solid #b29866;
+		}
+	.hh-menu li:hover ul li:hover a {
+		background: #803026;
+		color: #fff;
+		}
+		
+/* ===============================================================================
+	MAIN CONTENT CONTAINERS
+   =============================================================================== */
+   
+	#hh-main-content {
+		display: inline-block;
+		width: 540px;
+		margin-right: 40px;
+		vertical-align: top;
+		}
+	#hh-main-content.fullwidth {
+		margin-right: 0;
+		display: block;
+		width: auto;
+		}
+	#hh-main-sidebar {
+		display: inline-block;
+		width: 260px;
+		background: #f0dac0;	
+		padding: 20px 20px 0 20px;
+		vertical-align: top;
+		margin-top: 48px;
+		}
+
+/* ===============================================================================
+	SIDEBAR BOXES
+   =============================================================================== */
+
+	.hh-sidebar-item {
+		background: #e9c396;
+		padding: 10px;
+		margin-bottom: 20px;
+		}
+		
+/* ===============================================================================
+	SIDEBAR BOX CONTENT STYLES
+   =============================================================================== */
+		
+	.hh-sidebar-item h3 {
+		background: #9a5a0e;
+		margin: -10px -10px 10px -10px;	
+		padding: 4px 10px;
+		color: #fff;
+		font-size: 14px;
+		text-transform: uppercase;
+		}
+	.hh-sidebar-item h4 {
+		font-family: georgia, serif;
+		font-size: 18px;
+		line-height: 18px;
+		margin: 0 0 5px 0;
+		font-style: italic;
+		color: #a03417;
+		}
+	.hh-sidebar-item p {
+		color: #111;
+		font-size: 14px;
+		line-height: 17px;
+		}
+	.hh-sidebar-item ul {
+		list-style-type: none;
+		}
+	.hh-sidebar-item li {
+		padding: 5px 0;
+		}
+	.hh-sidebar-item li a, .hh-sidebar-item li h5 {
+		display: block;
+		padding: 0 0 5px 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		font-size: 16px;
+		line-height: 16px;
+		margin: 0 0 5px 0;
+		font-weight: bold;
+		border-bottom: 1px dotted #675c5c;
+		}
+		
+/* ===============================================================================
+	ADOPT A DOG BOXES
+   =============================================================================== */
+   
+	#hh-adopt-container {
+		position: relative;
+		min-height: 395px;
+		}
+	.hh-adopt {
+		height: 355px;
+		background: #613127;
+		position: relative;
+		margin: 15px 0;
+		border: 1px solid #bb791e;
+		}
+	.hh-adopt-image {
+		float: left;
+		width: 540px;
+		height: 355px;
+		margin-right: 15px;
+		border-right: 1px solid #bb791e;
+		position: relative;
+		z-index: 5;
+		}
+	.hh-adopt-interest {
+		position: absolute;
+		bottom: 15px;
+		right: 15px;
+		width: 305px;
+		height: 28px;
+		}
+	.hh-adopt-text {
+		position: relative;
+		padding: 15px;
+		}
+	.hh-adopt-text h3 {
+		margin: 0 0 5px 0;
+		padding: 0 0 6px 0;
+		color: #fff;
+		border-bottom: 1px dotted #bb791e;
+		}
+	.hh-adopt-text p {
+		font: 14px/18px 'trebuchet ms',trebuchet,sans-serif;
+		color: #f0ddc4;
+		margin: 0 0 5px 0;
+		border-top: 1px dotted #bb791e;
+		padding: 10px 0 0 0;
+		}
+	.hh-adopt-text p.hh-dog-stats {
+		padding: 0;
+		margin: 5px 0;
+		font-size: 12px;
+		line-height: 15px;
+		color: #ddb681;
+		border: 0;
+		}
+	.hh-adopt-text p.hh-dog-stats em {
+		color: #cda671;
+		}
+		
+/* ===============================================================================
+	FOOTER BOXES
+   =============================================================================== */
+
+	.hh-foot-block {
+		display: inline-block;
+		background: #23190f;
+		margin: 0 20px 0 0;
+		padding: 15px 20px;
+		width: 242px;
+		vertical-align: top;
+		min-height: 120px;
+		}
+		
+/* FOOTER BLOCK CONTENT */
+
+	.hh-foot-block h3 {
+		margin: 0 0 8px 0;
+		padding: 0 0 8px 0;
+		border-bottom: 1px solid #555;
+		color: #e4dfc7;
+		font-size: 18px;
+		line-height: 18px;
+		}
+	.hh-foot-block p {
+		color: #d2ccae;
+		font-size: 12px;
+		line-height: 18px;
+		margin: 0 0 5px 0;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		}
+	.hh-foot-block a {
+		color: #fff;
+		}
+	.hh-foot-block p.copyright {
+		color: #888;
+		margin: 0;
+		}
+		
+		
+/* ===============================================================================
+	ADVANCED TECHNIQUES
+   ============================================================================ */
+
+	#hh-container {
+		box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.3);
+		}
+	a.hh-button {		
+		border: 1px solid #fff;
+		border-radius: 6px;
+		background: #bb2d07;
+		display: inline-block;
+		padding: 5px 10px 6px 10px;
+		font-family: 'trebuchet ms', trebuchet, sans-serif;
+		color: #fff;
+		font-size: 12px;
+		line-height: 12px;
+		text-transform: uppercase;
+		margin-bottom: 5px;
+		box-shadow: 0px 2px 5px rgba(50, 50, 50, 0.3);
+		}
+	a.hh-button:hover {
+		text-decoration: none;
+		background: #d9522e;
+		}
